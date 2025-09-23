@@ -8,19 +8,23 @@ int main()
 {
 	srand(time(NULL));
 
+	int BallCount;
+	cout << "공의 갯수를 입력해 주세요 : ";
+	cin >> BallCount;
+
 	int Ball;
 	bool bIsClear = true;
-	bool Pocket[52] = { false, };
+	bool *Pocket = new bool[BallCount];
 	int Count = 0;
 
-	/*for (int i = 0; i < 52; i++)
+	for (int i = 0; i < BallCount; i++)
 	{
-		cout << Pocket[i] << "\n";
-	}*/
+		Pocket[i] = false;
+	}
 
 	while(bIsClear)
 	{
-		Ball = rand() % 52;
+		Ball = rand() % BallCount;
 
 		if (Pocket[Ball])
 		{
@@ -30,7 +34,7 @@ int main()
 		Pocket[Ball] = true;
 		Count++;
 
-		if (Count == 52)
+		if (Count == BallCount)
 		{
 			bIsClear = false;
 		}
